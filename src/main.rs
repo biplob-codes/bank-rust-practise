@@ -22,13 +22,12 @@ impl Bank {
         Bank { accounts: vec![] }
     }
 }
-fn print_accnt(ac: Account) -> Account {
-    print!("{:#?}", ac);
-    ac
+fn print_accnt(ac: &Account) {
+    print!("{:#?}", *ac);
 }
 fn main() {
     println!("Hello, world!");
-    let mut ac = Account::new(1, String::from("Itachi Uchiha"));
-    ac = print_accnt(ac);
+    let ac = Account::new(1, String::from("Itachi Uchiha"));
+    print_accnt(&ac);
     println!("Here is another time: {:#?}", ac)
 }
