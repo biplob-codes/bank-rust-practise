@@ -1,33 +1,16 @@
 #[derive(Debug)]
-struct Account {
-    id: u32,
-    holder: String,
-    balance: i32,
+enum Media {
+    Book { title: String, author: String },
+    Movie { title: String, director: String },
+    Audiobook { title: String },
 }
-impl Account {
-    fn new(id: u32, holder: String) -> Self {
-        Account {
-            id,
-            holder,
-            balance: 0,
-        }
-    }
+fn print_media(m: Media) {
+    println!("{:#?}", m)
 }
-#[derive(Debug)]
-struct Bank {
-    accounts: Vec<Account>,
-}
-impl Bank {
-    fn new() -> Self {
-        Bank { accounts: vec![] }
-    }
-}
-fn print_accnt(ac: &Account) {
-    print!("{:#?}", *ac);
-}
+
 fn main() {
-    println!("Hello, world!");
-    let ac = Account::new(1, String::from("Itachi Uchiha"));
-    print_accnt(&ac);
-    println!("Here is another time: {:#?}", ac)
+    let ab = Media::Audiobook {
+        title: String::from("Sharing is caring"),
+    };
+    print_media(ab);
 }
