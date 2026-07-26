@@ -33,6 +33,19 @@ impl Media {
         }
     }
 }
+#[derive(Debug)]
+struct Catalog {
+    items: Vec<Media>,
+}
+impl Catalog {
+    fn new() -> Self {
+        Catalog { items: vec![] }
+    }
+    fn add(&mut self, m: Media) {
+        self.items.push(m);
+    }
+}
+
 fn main() {
     let ab = Media::Audiobook {
         title: String::from("Sharing is caring"),
@@ -46,8 +59,9 @@ fn main() {
         title: String::from("The Oddessy"),
         director: String::from("Christoger Nolan"),
     };
-
-    println!("{}", ab.description2());
-    println!("{}", b.description2());
-    println!("{}", m.description2());
+    let mut ctlg = Catalog::new();
+    ctlg.add(m);
+    ctlg.add(ab);
+    ctlg.add(b);
+    println!("{:#?}", ctlg);
 }
