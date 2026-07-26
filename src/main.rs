@@ -19,6 +19,19 @@ impl Media {
             String::from("Media description")
         }
     }
+    fn description2(&self) -> String {
+        match self {
+            Media::Book { title, author } => {
+                format!("Book: {} - {}", title, author)
+            }
+            Media::Movie { title, director } => {
+                format!("Movie: {} - {}", title, director)
+            }
+            Media::Audiobook { title } => {
+                format! {"{}",title}
+            }
+        }
+    }
 }
 fn main() {
     let ab = Media::Audiobook {
@@ -34,7 +47,7 @@ fn main() {
         director: String::from("Christoger Nolan"),
     };
 
-    println!("{}", ab.description());
-    println!("{}", b.description());
-    println!("{}", m.description());
+    println!("{}", ab.description2());
+    println!("{}", b.description2());
+    println!("{}", m.description2());
 }
